@@ -14,7 +14,7 @@ wrongs = []
 strikes = 0
 rnum = 0
 strikeLimit = 5
-words = ['ROCKET','SCIENCE','MATHEMATICS','PROGRAMMING','PYTHON','HALF-LIFE','CALIFORNIA','LEARN']
+words = ['ROCKET','SCIENCE','MATHEMATICS','PROGRAMMING','PYTHON','HALF-LIFE','CALIFORNIA','LEARN','adventure','beautiful','chocolate','delicious','elephant','furniture','gorgeous','happiness','imagine','jewelry','kangaroo','language','magazine','notebook','opposite','painting','question','rainbow','sandwich','triangle','umbrella','vacation','wonderful','xylophone','yesterday','zeppelin','alphabet','birthday','calendar','dinosaur','exercise','flamingo','giraffe','hospital','island','jacket','kitchen','library','mountain','neighbor','octopus','penguin','quilt','radiator','scissors','treasure','universe','vegetable','waterfall','yogurt','zucchini','balloon','cabinet','diamond','envelope','firework','glacier','harmony','illusion','jogging','knitting','lemonade','mushroom','novelty','orchard','parachute','quality','raccoon','sapphire','teapot','unicorn','vinegar','whisper','yawning','zigzag','airport','blanket','carnival','dolphin','eyebrow','fountain','golfing','hedgehog','inspire','justice','keyboard','lullaby','marble','nugget','organic','pineapple','quiet','reptile','skeleton','tornado','upgrade','victory','waffle','yardstick','zebra']
     
 #init function easily resets global variables
 #to restart the game without the need to
@@ -31,10 +31,16 @@ def init():
     wrongs.clear()
     #word = random.choice(words)
     rnum = random.randrange(0,len(words))
-    word = words[rnum]
+    word = words[rnum].upper()
     for i in range(len(word)):
         if word[i] == "-":
             guess.append("-")
+        elif word[i] == " ":
+            guess.append(" ")
+        elif word[i] == ".":
+            guess.append(".")
+        elif word[i] == ",":
+            guess.append(",")
         else:
             guess.append("_")
 
@@ -202,7 +208,7 @@ def program():
             chi -= 1
 
     except ValueError:
-        if not found:
+        if not found and letter not in wrongs:
             strikes += 1
             wrongs.append(letter)
 
